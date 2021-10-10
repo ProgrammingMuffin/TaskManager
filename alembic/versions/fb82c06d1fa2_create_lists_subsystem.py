@@ -17,11 +17,13 @@ depends_on = None
 
 
 def upgrade():
-    op.create_table("lists")
-    op.add_column("lists", sa.Column("name", sa.Text))
-    op.add_column("lists", sa.Column("recurring_deadline", sa.Time)
-    op.add_column("lists", sa.Column("created_at", sa.DateTime))
-    op.add_column("lists", sa.Column("modified_at", sa.DateTime))
+    op.create_table("lists",
+        sa.Column("id", sa.BIGINT, primary_key=True),
+        sa.Column("name", sa.Text, nullable=False),
+        sa.Column("recurring_deadline", sa.Time, nullable=False),
+        sa.Column("created_at", sa.DateTime, nullable=False),
+        sa.Column("modified_at", sa.DateTime, nullable=False)
+    )
 
 
 def downgrade():
