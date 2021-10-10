@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+spec:
+  selector:
+    matchLabels:
+      database: mysql
+  replicas: 1 
+  template:
+    metadata:
+      name: mysql
+      labels:
+        database: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        ports:
+        - containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: password
+          - name: MYSQL_DATABASE
+            value: taskmanager
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-clusterip
+spec:
+  selector:
+    database: mysql
+  ports:
+    - port: 3306
+      targetPort: 3306
+  type: ClusterIP
+---
