@@ -1,1 +1,1 @@
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql:////root:password@mysql-clusterip/taskmanager'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:password@mysql-clusterip:3306/taskmanager'
