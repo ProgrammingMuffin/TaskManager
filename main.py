@@ -1,12 +1,13 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-import os
 from lists.views import lists
+from database import db
+import pymysql
+import os
 
 
 app = Flask(__name__)
 app.config.from_pyfile(os.path.join('.', 'config.py'))
-db = SQLAlchemy(app)
+db.init_app(app)
 
 app.register_blueprint(lists, url_prefix="/lists")
 
