@@ -1,7 +1,6 @@
 from flask import Flask
 from lists.views import lists
 from database import db
-import pymysql
 import os
 
 
