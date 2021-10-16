@@ -1,14 +1,32 @@
 <template>
 	<div class="lists_container" >
-		Testing 123
+		<list-entry v-for="list in lists" :key="list" :value="list" />
 	</div>
 </template>
 
 <script>
+import ListEntry from "./ListEntry";
+import { baseUrl, listsUri } from "../util/apiUtil";
+
 export default {
 	name: "lists-column",
 	data () {
-		return {}
+		return {
+			lists: []
+		}
+	},
+	components: {
+		ListEntry
+	},
+	mounted () {
+		this.getLists();	
+	},
+	methods: {
+		getLists: () => {
+			fetch("http://" + baseUrl + listsUri)
+			.then((res) => { this.$data.lists.append(res.body); })
+			.catch((error) => { console.log(error); })
+		}
 	}
 }
 </script>
