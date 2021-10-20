@@ -1,12 +1,14 @@
 from flask import Flask
 from lists.views import lists
 from database import db
+from flask_cors import CORS
 import os
 
 
 app = Flask(__name__)
 app.config.from_pyfile(os.path.join('.', 'config.py'))
 db.init_app(app)
+CORS(app)
 
 app.register_blueprint(lists, url_prefix="/lists")
 

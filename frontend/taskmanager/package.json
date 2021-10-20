@@ -11,12 +11,13 @@
     "core-js": "^3.6.5",
     "node-sass": "^6.0.1",
     "sass-loader": "^10",
-    "vue": "^3.2.20"
+    "vue": "^3.2.20",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-service": "^4.5.14",
     "@vue/compiler-sfc": "^3.2.20",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",

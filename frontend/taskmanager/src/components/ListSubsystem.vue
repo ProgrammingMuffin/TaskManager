@@ -28,7 +28,6 @@ export default {
 	background-color: $secondary_color;
 	color: $accent;
 	width: $screen_width;
-	min-width: 100vw;
 	height: 100vh;
 	margin-left: auto;
 	margin-right: auto;
@@ -36,7 +35,8 @@ export default {
 
 .base_container > div {
 	background: inherit;
-	width: $screen_width;
+	min-width: $screen_width;
+	width: 100%;
 	min-height: 100vh;
 	margin-left: auto;
 	margin-right: auto;

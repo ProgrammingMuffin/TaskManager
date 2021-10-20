@@ -1,7 +1,11 @@
 $primary_color: #0dbb86;
+$primary_color_dark_1: #009669;
 $secondary_color: white;
 $accent: black;
-$screen_width: 1200px;
+$screen_width: 1960px;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 body {
 	margin: 0;
