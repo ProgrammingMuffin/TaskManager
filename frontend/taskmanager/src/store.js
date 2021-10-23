@@ -1,4 +1,4 @@
-import { createStore } from "vuex"
+import { createStore } from "vuex";
 
 export const store = createStore({
 	state () {
@@ -12,6 +12,6 @@ export const store = createStore({
 		},
 		stop_fetch_lists (state) {
 			state.fetch_lists = 0
-		}	
+		}
 	}
 });

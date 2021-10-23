@@ -16,8 +16,12 @@ class TaskListsDto:
 class TaskListDto:
 
     def __init__(self):
+        self.id = ""
         self.name = ""
         self.recurring_deadline = None
+
+    def set_id(self, id):
+        self.id = id
 
     def set_name(self, name):
         self.name = name
