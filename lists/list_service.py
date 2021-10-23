@@ -3,6 +3,7 @@ from database import db
 from .dtos import TaskListDto, TaskListsDto
 import json
 import time
+from flask import make_response, abort
 
 global STRP_FORMAT
 STRP_FORMAT = "%H:%M:%S"
@@ -29,6 +30,7 @@ def get_all_lists():
     task_list_dtos = []
     for task_list in task_lists:
         task_list_dto = TaskListDto()
+        task_list_dto.set_id(task_list.id)
         task_list_dto.set_name(task_list.name)
         task_list_dto.set_recurring_deadline(
                 task_list.recurring_deadline.strftime(STRP_FORMAT))
@@ -36,3 +38,15 @@ def get_all_lists():
     task_lists_dto = TaskListsDto()
     task_lists_dto.set_lists(task_list_dtos)
     return json.dumps(task_lists_dto.__dict__)
+
+
+def delete_task_list(list_id):
+    response = dict()
+    task_list = List.query.get(list_id)
+    if task_list:
+        db.session.delete(task_list)
+        db.session.commit()
+        response["message"] = "List deleted"
+        return response
+    response["message"] = "List not found"
+    abort(make_response(json.dumps(response), 404))
