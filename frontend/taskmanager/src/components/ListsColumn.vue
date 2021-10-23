@@ -3,7 +3,7 @@
 		<div class="logo" >TaskManager</div>
 		<div class="padding" ></div>
 		<div class="your_list" >Your lists
-			<button class="add_list_button" >+</button>
+			<button class="add_list_button" @click="triggerFetchLists" >+</button>
 		</div>
 		<list-entry v-for="list in lists" :key="list" :value="list" />
 	</div>
@@ -12,12 +12,13 @@
 <script>
 import ListEntry from "./ListEntry";
 import { baseUrl, listsUri, backendPort } from "../util/apiUtil";
+import { mapState } from "vuex";
 
 export default {
 	name: "lists-column",
 	data () {
 		return {
-			lists: ["lol"]
+			lists: []
 		}
 	},
 	components: {
@@ -25,6 +26,21 @@ export default {
 	},
 	created () {
 		this.getLists();	
+	},
+	computed: {
+		...mapState(['fetch_lists'])
+	},
+	watch: {
+		fetch_lists () {
+			if (this.fetch_lists == 1) {
+				console.log("fetching lists");
+				this.lists.length = 0;
+				this.getLists()
+				this.$store.commit('stop_fetch_lists');
+			} else {
+				console.log("stopping fetch lists");
+			}
+		}
 	},
 	methods: {
 		getLists () {
@@ -36,8 +52,13 @@ export default {
 				});
 			})
 			.catch((error) => { console.log(error); });
+		},
+		triggerFetchLists () {
+			this.$store.commit('trigger_fetch_lists');
+			this.$router.push('/list/create');
 		}
 	}
+
 }
 </script>
 

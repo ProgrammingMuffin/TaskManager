@@ -2,6 +2,9 @@
 	<div class="base_container" >
 		<div>
 			<lists-column></lists-column>
+			<div class="routed_container" >
+				<router-view></router-view>
+			</div>
 		</div>
 	</div>
 </template>
@@ -27,7 +30,7 @@ export default {
 .base_container {
 	background-color: $secondary_color;
 	color: $accent;
-	width: $screen_width;
+	max-width: 100%;
 	height: 100vh;
 	margin-left: auto;
 	margin-right: auto;
@@ -40,5 +43,13 @@ export default {
 	min-height: 100vh;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.routed_container {
+	background: white;
+	color: black;
+	width: 75%;
+	height: 100vh;
+	float: left;
 }
 </style>
