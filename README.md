@@ -1,2 +1,3 @@
-# TaskManager
-A small application written to demonstrate basic kubernetes concepts
+## TaskManager
+
+TaskManager is an application that allows you to create lists and add tasks to that list which you can then mark as done when it's done. It is written primarily for demonstrating microservice architecture and kubernetes. It can be used as a _sample or reference_ project for building similar projects. The backend is written in *Python* using the *Flask* lightweight web framework. It uses *Flask-SQLAlchemy* for the ORM and it uses *Alembic* migration tool which is built on top of SQLAlchemy. The UI is written in *Vue.js* and the state management is handled using *Vuex*. The router is handled using *vue-router*. 
