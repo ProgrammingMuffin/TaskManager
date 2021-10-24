@@ -18,7 +18,7 @@ TaskManager is an application that allows you to create lists and add tasks to t
 - Install minikube if you don't already have it.
 - run ```minikube start``` to start the cluster
 - run ```minikube ip``` to get the node's IP address
-- open `/etc/hosts` file and add an entry ```{minikube_ip} taskmanagerbackend```. Replace minikube_ip with the ip we found with ```inikube ip``` command
+- open `/etc/hosts` file and add an entry ```{minikube_ip} taskmanagerbackend```. Replace `{minikube_ip}` with the ip we found with ```minikube ip``` command
 - clone the repository
 - run ```sh deploy.sh``` and it should deploy the application to minikube
 
