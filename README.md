@@ -11,3 +11,17 @@ TaskManager is an application that allows you to create lists and add tasks to t
 - Deleting a list
 
 [![delete_list.gif](https://s1.gifyu.com/images/delete_list.gif)](https://gifyu.com/image/eIXI)
+
+## Installation
+
+- Install docker if you don't already have it.
+- Install minikube if you don't already have it.
+- run ```minikube start``` to start the cluster
+- run ```minikube ip``` to get the node's IP address
+- open `/etc/hosts` file and add an entry ```{minikube_ip} taskmanagerbackend```. Replace minikube_ip with the ip we found with ```inikube ip``` command
+- clone the repository
+- run ```sh deploy.sh``` and it should deploy the application to minikube
+
+## If the installation steps didn't work
+
+Please create an issue on the repository
