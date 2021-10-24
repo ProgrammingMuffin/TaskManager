@@ -5,7 +5,8 @@
 		<div class="your_list" >Your lists
 			<button class="add_list_button" @click="triggerFetchLists" >+</button>
 		</div>
-		<list-entry v-for="list in lists" :key="list" :value="list" />
+		<list-entry v-for="list in lists" :key="list"
+			:list_id="list.id" :value="list.name" />
 	</div>
 </template>
 
@@ -48,7 +49,7 @@ export default {
 			.then((res) => { return res.json(); })
 			.then((data) => {
 				data.lists.forEach((list) => {
-					this.lists.push(list.name);
+					this.lists.push(list);
 				});
 			})
 			.catch((error) => { console.log(error); });
@@ -69,7 +70,7 @@ export default {
 .lists_container {
 	background-color: $primary_color;
 	color: $secondary_color;
-	width: 100vw * (25 / 100);
+	width: 100% * (25 / 100);
 	min-height: 100vh;
 	float:left;
 }
