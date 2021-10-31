@@ -1,7 +1,5 @@
 from flask import Blueprint, request
-from .models import List
 from . import list_service
-from database import db
 
 
 lists = Blueprint("list_controller", __name__)
@@ -22,4 +20,18 @@ def getAllLists():
 @lists.route("<list_id>", methods=["DELETE"])
 def deleteList(list_id):
     response = list_service.delete_task_list(list_id)
+    return response
+
+
+@lists.route("<list_id>/tasks", methods=["POST"])
+def createTaskInList(list_id):
+    request_json = request.json
+    request_json["list_id"] = list_id
+    response = list_service.create_task(request_json)
+    return response
+
+
+@lists.route("<list_id>/tasks", methods=["GET"])
+def getAllTasksFromList(list_id):
+    response = list_service.getListTasks(list_id)
     return response
