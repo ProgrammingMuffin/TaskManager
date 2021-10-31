@@ -31,7 +31,6 @@ def upgrade():
         sa.Column("status", sa.String(64), nullable=False),
         sa.Column("description", sa.Text),
         sa.Column("list_id", sa.BIGINT, nullable=False),
-        sa.Column("soft_deleted", sa.BOOLEAN, nullable=False),
         sa.Column("created_at", sa.DateTime, nullable=False),
         sa.Column("modified_at", sa.DateTime, nullable=False),
         sa.ForeignKeyConstraint(['list_id'], ['lists.id'])

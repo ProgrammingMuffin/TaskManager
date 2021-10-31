@@ -6,27 +6,30 @@
 
 class TaskListsDto:
 
-    def __init__(self):
-        self.lists = []
-    
-    def set_lists(self, taskListDtos=[]):
+    def __init__(self, taskListDtos):
         self.lists = taskListDtos
 
 
 class TaskListDto:
 
-    def __init__(self):
-        self.id = ""
-        self.name = ""
-        self.recurring_deadline = None
-
-    def set_id(self, id):
+    def __init__(self, id, name, recurring_deadline):
         self.id = id
-
-    def set_name(self, name):
         self.name = name
-
-    def set_recurring_deadline(self, recurring_deadline):
         self.recurring_deadline = recurring_deadline
+
+
+class TasksDto:
+
+    def __init__(self, taskDtos):
+        self.tasks = taskDtos
+
+
+class TaskDto:
+
+    def __init__(self, id, name, status, description):
+        self.id = id
+        self.name = name
+        self.status = status
+        self.description = description
 
 

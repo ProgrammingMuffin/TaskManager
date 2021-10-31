@@ -10,7 +10,7 @@ COPY requirements.txt /www/app/
 
 RUN pip install -r /www/app/requirements.txt
 
-COPY ./ /www/app/
+COPY . /www/app/
 
 RUN ls /www/app/frontend/taskmanager
 

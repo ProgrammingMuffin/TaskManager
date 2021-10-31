@@ -29,9 +29,9 @@ class Task(db.Model, Audited):
     description = db.Column("description", db.String)
     list_id = db.Column("list_id", db.ForeignKey(List.id),
             nullable=False)
-    soft_deleted = db.Column("soft_deleted", db.BOOLEAN, nullable=False)
 
-
+# can be used for further extending the functionality of the list
+# in the future.
 class ListProperty(db.Model, Audited):
     ''' This class represents list properties'''
     __tablename__ = "list_properties"

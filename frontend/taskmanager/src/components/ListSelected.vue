@@ -1,21 +1,28 @@
 <template>
 	<list-window :title="selected_list.name" >
+		<task-entry v-for="task in tasks" :key="task" :task="task" ></task-entry>
 		<button class="red_button" @click="deleteList" >Delete</button>	
 	</list-window>
 </template>
 
 <script>
 import ListWindow from "./ListWindow";
-import { baseUrl, listsUri, backendPort } from "../util/apiUtil";
+import { baseUrl, listsUri, backendPort, tasksUri } from "../util/apiUtil";
 import { mapState } from "vuex";
+import TaskEntry from './TaskEntry.vue';
 
 export default {
 	name: 'list-selected',
 	data () {
-		return {}
+		return {
+			tasks: []
+		}
 	},
 	computed: {
 		...mapState(['selected_list'])
+	},
+	created () {
+		this.getTasks()
 	},
 	methods: {
 		deleteList: function () {
@@ -33,15 +40,29 @@ export default {
 			})
 			.catch((error) => { console.log(error); });
 			
+		},
+		getTasks: function () {
+			fetch("http://" + baseUrl + backendPort + listsUri +
+			"/" + this.selected_list.id + tasksUri, {
+				method: "GET"
+			})
+			.then((res) => { return res.json(); })
+			.then((data) => {
+				this.tasks = data
+				console.log("tasks fetched successfully")
+			})
+			.catch((error) => { console.log(error); });
 		}
 	},
 	components: {
-		ListWindow
+		ListWindow,
+		TaskEntry
 	}
 }
 </script>
 
-<style lang="scss" >
+
+TaskEntry<style lang="scss" >
 @import "../assets/stylesheets/base";
 
 .red_button {
